@@ -9,7 +9,7 @@ const UserPlaces = () => {
       imageUrl:
         "https://next-images.123rf.com/index/_next/image/?url=https://assets-cdn.123rf.com/index/static/assets/top-section-bg.jpeg&w=3840&q=75",
       title: "The greates place of all time",
-      decription:
+      description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos obcaecati Lorem ipsum dolor sit amet consectetur adipisicing elit.a, suscipit recusandae itaque exercitationem excepturi totam a! recusandae itaque exercitationem excepturi totam a!",
       address: " Eos obcaecati molestias eaque doloremque repellat! Molliti",
       creator: "u1",
@@ -23,7 +23,7 @@ const UserPlaces = () => {
       imageUrl:
         "https://next-images.123rf.com/index/_next/image/?url=https://assets-cdn.123rf.com/index/static/assets/top-section-bg.jpeg&w=3840&q=75",
       title: "The greates place of all time",
-      decription:
+      description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos obcaecati Lorem ipsum dolor sit amet consectetur adipisicing elit.a, suscipit recusandae itaque exercitationem excepturi totam a! recusandae itaque exercitationem excepturi totam a!",
       address: " Eos obcaecati molestias eaque doloremque repellat! Molliti",
       creator: "u2",
