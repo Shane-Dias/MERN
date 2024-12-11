@@ -1,18 +1,86 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./PlaceItem.css";
 import Card from "../../shared/components/UIElements/Card";
 import Button from "../../shared/components/FormElements/Button";
-import { useState } from "react";
 import Modal from "../../shared/components/UIElements/Modal";
+import { Map, View } from "ol";
+import TileLayer from "ol/layer/Tile";
+import VectorLayer from "ol/layer/Vector";
+import VectorSource from "ol/source/Vector";
+import Feature from "ol/Feature";
+import Point from "ol/geom/Point";
+import Style from "ol/style/Style";
+import Icon from "ol/style/Icon";
+import OSM from "ol/source/OSM";
+import { fromLonLat } from "ol/proj";
+import "ol/ol.css";
 
 const PlaceItem = (props) => {
   const [showMap, setShowMap] = useState(false);
+
   const openMapHandler = () => {
     setShowMap(true);
   };
+
   const closeMapHandler = () => {
     setShowMap(false);
   };
+
+  useEffect(() => {
+    if (showMap) {
+      const coordinates = fromLonLat([
+        props.coordinates.lng,
+        props.coordinates.lat,
+      ]);
+
+      // Create the map
+      const map = new Map({
+        target: "map", // ID of the map container div
+        layers: [
+          new TileLayer({
+            source: new OSM(), // OpenStreetMap layer
+          }),
+        ],
+        view: new View({
+          center: coordinates, // Center map at the given coordinates
+          zoom: 14,
+        }),
+      });
+
+      //marker feature
+      const marker = new Feature({
+        geometry: new Point(coordinates), // Position of the marker
+      });
+
+      // Style for the marker
+      marker.setStyle(
+        new Style({
+          image: new Icon({
+            src: "https://cdn-icons-png.flaticon.com/512/684/684908.png", // URL to marker icon
+            anchor: [0.5, 1], //anchor point
+            scale: 0.07, //marker size
+          }),
+        })
+      );
+
+      // Add marker to a vector source
+      const vectorSource = new VectorSource({
+        features: [marker],
+      });
+
+      // Add vector layer to the map
+      const vectorLayer = new VectorLayer({
+        source: vectorSource,
+      });
+
+      map.addLayer(vectorLayer);
+
+      // Cleanup map on unmount
+      return () => {
+        map.setTarget(null);
+      };
+    }
+  }, [showMap, props.coordinates]);
 
   return (
     <React.Fragment>
@@ -25,7 +93,7 @@ const PlaceItem = (props) => {
         footer={<Button onClick={closeMapHandler}>CLOSE</Button>}
       >
         <div className="map-container">
-          <h2>THE MAP</h2>
+          <div id="map" style={{ height: "300px", width: "100%" }}></div>
         </div>
       </Modal>
       <li className="place-item">
@@ -39,7 +107,9 @@ const PlaceItem = (props) => {
             <p>{props.description}</p>
           </div>
           <div className="place-item__actions">
-            <Button inverse onClick={openMapHandler}>VIEW ON MAP</Button>
+            <Button inverse onClick={openMapHandler}>
+              VIEW ON MAP
+            </Button>
             <Button to={`places/${props.id}`}>EDIT</Button>
             <Button danger>DELETE</Button>
           </div>

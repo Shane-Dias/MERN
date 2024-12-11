@@ -14,8 +14,8 @@ const UserPlaces = () => {
       address: " Eos obcaecati molestias eaque doloremque repellat! Molliti",
       creator: "u1",
       location: {
-        lat: 40.18722,
-        lng: -39.139872,
+        lat: 48.8584,
+        lng: 2.2945,
       },
     },
     {
