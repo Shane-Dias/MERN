@@ -1,9 +1,19 @@
-import React from 'react'
+import React from "react";
+import "./NewPlace.css";
+import Input from "../../shared/components/FormElements/Input";
 
 const NewPlace = () => {
   return (
-    <h2>New PLace Page</h2>
-  )
-}
+    <form className="place-form">
+      <Input
+        type="text"
+        element="input"
+        label="Title"
+        validators={[]}
+        errorText="Please enter a valid title."
+      />
+    </form>
+  );
+};
 
-export default NewPlace
+export default NewPlace;
