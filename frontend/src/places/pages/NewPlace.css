@@ -1,4 +1,4 @@
-.place-form {
+/* .place-form {
   list-style: none;
   margin: 0 auto;
   padding: 1rem;
@@ -7,4 +7,63 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   border-radius: 6px;
   background: white;
+} */
+
+.place-form {
+  width: 90%;
+  max-width: 40rem;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.place-form label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: block;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.place-form input,
+.place-form textarea {
+  width: 100%;
+  font: inherit;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  background-color: #fff;
+  transition: border-color 0.3s;
+}
+
+.place-form input:focus,
+.place-form textarea:focus {
+  outline: none;
+  border-color: #4dff00;
+  box-shadow: 0 0 4px rgba(98, 0, 234, 0.2);
+}
+
+.place-form textarea {
+  min-height: 6rem;
+  resize: vertical;
+}
+
+.place-form .form-control--invalid input,
+.place-form .form-control--invalid textarea {
+  border-color: #e74c3c;
+  background-color: #f9e6e6;
+}
+
+.place-form .form-control--invalid label {
+  color: #e74c3c;
+}
+
+.place-form .error-text {
+  color: #e74c3c;
+  font-size: 0.9rem;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
 }
