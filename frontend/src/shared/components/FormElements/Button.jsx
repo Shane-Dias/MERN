@@ -16,11 +16,11 @@ const Button = (props) => {
       </a>
     );
   }
+
   if (props.to) {
     return (
       <Link
         to={props.to}
-        exact={props.exact}
         className={`button button--${props.size || "default"} ${
           props.inverse && "button--inverse"
         } ${props.danger && "button--danger"}`}
@@ -29,6 +29,7 @@ const Button = (props) => {
       </Link>
     );
   }
+
   return (
     <button
       className={`button button--${props.size || "default"} ${
