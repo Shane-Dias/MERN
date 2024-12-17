@@ -34,6 +34,11 @@
     width: 40rem;
   }
 }
+/* @media (max-width: 768px) {
+  .modal__footer {
+    height: 136px;
+  }
+} */
 
 .modal-enter {
   transform: translateY(-10rem);

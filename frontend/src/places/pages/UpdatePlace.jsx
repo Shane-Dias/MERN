@@ -8,11 +8,12 @@ import {
   VALIDATOR_MINLENGTH,
 } from "../../shared/Util/validators";
 import { useForm } from "../../shared/hooks/form-hook";
+import Card from "../../shared/components/UIElements/Card";
 import "./PlaceForm.css";
 
 const DUMMY_PLACES = [
   {
-    id: "p1",
+    id: "u1",
     title: "Empire State Building",
     description: "One of the most famous sky scrapers in the world!",
     imageUrl:
@@ -25,8 +26,8 @@ const DUMMY_PLACES = [
     creator: "u1",
   },
   {
-    id: "p2",
-    title: "Empire State Building",
+    id: "u2",
+    title: "lol State Building",
     description: "One of the most famous sky scrapers in the world!",
     imageUrl:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/NYC_Empire_State_Building.jpg/640px-NYC_Empire_State_Building.jpg",
@@ -63,19 +64,13 @@ const UpdatePlace = () => {
     if (identifiedPlace) {
       setFormData(
         {
-          title: {
-            value: identifiedPlace.title,
-            isValid: true,
-          },
-          description: {
-            value: identifiedPlace.description,
-            isValid: true,
-          },
+          title: { value: identifiedPlace.title, isValid: true },
+          description: { value: identifiedPlace.description, isValid: true },
         },
         true
       );
-      setIsLoading(false);
     }
+    setIsLoading(false);
   }, [setFormData, identifiedPlace]);
 
   const placeUpdateSubmitHandler = (event) => {
@@ -86,7 +81,9 @@ const UpdatePlace = () => {
   if (!identifiedPlace && !isLoading) {
     return (
       <div className="center">
-        <h2>Could not find place!</h2>
+        <Card>
+          <h2>Could not find place!</h2>
+        </Card>
       </div>
     );
   }
