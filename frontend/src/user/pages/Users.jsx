@@ -8,7 +8,7 @@ const Users = () => {
       name: "Shane",
       places: 1,
       image:
-        "https://static.vecteezy.com/system/resources/thumbnails/026/497/734/small_2x/businessman-on-isolated-png.png",
+        "https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg",
     },
   ];
   return <UsersList items={DUMMY_ARRY} />;
