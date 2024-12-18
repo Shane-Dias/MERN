@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./PlaceItem.css";
 import Card from "../../shared/components/UIElements/Card";
 import Button from "../../shared/components/FormElements/Button";
@@ -14,8 +14,10 @@ import Icon from "ol/style/Icon";
 import OSM from "ol/source/OSM";
 import { fromLonLat } from "ol/proj";
 import "ol/ol.css";
+import AuthContext from "../../shared/context/auth-context";
 
 const PlaceItem = (props) => {
+  const auth_obj = useContext(AuthContext);
   const [showMap, setShowMap] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
 
@@ -147,10 +149,14 @@ const PlaceItem = (props) => {
             <Button inverse onClick={openMapHandler}>
               VIEW ON MAP
             </Button>
-            <Button to={`/places/${props.id}`}>EDIT</Button>
-            <Button danger onClick={showDeleteWarningHandler}>
-              DELETE
-            </Button>
+            {auth_obj.isLoggedin && (
+              <Button to={`/places/${props.id}`}>EDIT</Button>
+            )}
+            {auth_obj.isLoggedin && (
+              <Button danger onClick={showDeleteWarningHandler}>
+                DELETE
+              </Button>
+            )}
           </div>
         </Card>
       </li>

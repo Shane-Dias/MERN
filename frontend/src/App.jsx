@@ -38,7 +38,7 @@ const App = () => {
         <Route path="/" element={<Users />} />
         <Route path="/:userId/places" element={<UserPlaces />} />
         <Route path="/auth" element={<Auth />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<Navigate to="/auth" replace />} />
       </>
     );
   }
