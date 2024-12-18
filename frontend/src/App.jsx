@@ -20,6 +20,28 @@ const App = () => {
     setIsLoggedin(false);
   }, []);
 
+  let routes;
+
+  if (isLoggedin) {
+    routes = (
+      <>
+        <Route path="/" element={<Users />} />
+        <Route path="/:userId/places" element={<UserPlaces />} />
+        <Route path="/places/new" element={<NewPlace />} />
+        <Route path="/places/:placeId" element={<UpdatePlace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </>
+    );
+  } else {
+    routes = (
+      <>
+        <Route path="/" element={<Users />} />
+        <Route path="/:userId/places" element={<UserPlaces />} />
+        <Route path="/auth" element={<Auth />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </>
+    );
+  }
   return (
     <AuthContext.Provider
       value={{ isLoggedin: isLoggedin, login: login, logout: logout }}
@@ -27,14 +49,7 @@ const App = () => {
       <BrowserRouter>
         <MainNavigation />
         <main>
-          <Routes>
-            <Route path="/" element={<Users />} />
-            <Route path="/places/new" element={<NewPlace />} />
-            <Route path="/:userId/places" element={<UserPlaces />} />
-            <Route path="/places/:placeId" element={<UpdatePlace />} />
-            <Route path="/auth" element={<Auth />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
+          <Routes>{routes}</Routes>
         </main>
       </BrowserRouter>
     </AuthContext.Provider>
