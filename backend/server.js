@@ -1,11 +1,18 @@
-const express = require('express')
-const app = express()
-const port = 5000
+const express = require("express");
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+const placeRoutes = require("./routes/places-routes");
+// const userRoutes = require("./routes/users-routes");
+
+const app = express();
+const port = 5000;
+
+app.use("/api/places",placeRoutes);
+// app.use("/api/users",userRoutes);
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+  console.log(`Example app listening on port ${port}`);
+});
